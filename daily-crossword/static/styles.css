@@ -1,0 +1,306 @@
+:root {
+  color-scheme: light;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #202522;
+  background: #f4f0e5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #202522;
+  --muted: #68716b;
+  --paper: #fffdf7;
+  --rule: #c8c3b6;
+  --accent: #2f6254;
+  --cell-size: 66px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(90deg, transparent 0, transparent calc(50% - 560px), rgb(80 68 43 / 3%) calc(50% - 559px), transparent calc(50% - 558px)),
+    #f4f0e5;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.page {
+  width: min(100% - 40px, 920px);
+  margin: 0 auto;
+}
+
+.masthead {
+  padding: 29px 0 18px;
+  text-align: center;
+  border-bottom: 3px double var(--ink);
+}
+
+.masthead-kicker {
+  font: 700 11px/1.2 Arial, sans-serif;
+  letter-spacing: 0.24em;
+}
+
+h1 {
+  margin: 5px 0 0;
+  font-size: clamp(39px, 8vw, 62px);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.date-line {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font: 13px/1.4 Arial, sans-serif;
+}
+
+main {
+  padding: 24px 0 27px;
+}
+
+.game-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+  font: 14px Arial, sans-serif;
+}
+
+.game-toolbar label {
+  font-weight: 700;
+}
+
+.game-toolbar select {
+  min-width: 145px;
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #8b9188;
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.suggestion {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) minmax(260px, 0.9fr);
+  gap: clamp(25px, 6vw, 70px);
+  align-items: start;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.puzzle-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crossword-grid {
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-template-rows: repeat(3, var(--cell-size));
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  gap: 1px;
+  box-shadow: 0 3px 12px rgb(32 37 34 / 12%);
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.cell--block {
+  background: #232a27;
+}
+
+.cell--active-word {
+  background: #dce9df;
+}
+
+.cell--selected {
+  z-index: 1;
+  background: #f2cf70;
+  box-shadow: inset 0 0 0 3px #9b6d19;
+}
+
+.cell--correct {
+  background: #cfe4d2;
+}
+
+.cell-number {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  font: 10px/1 Arial, sans-serif;
+}
+
+.cell-letter {
+  padding-top: 8px;
+  font: 700 31px/1 Arial, sans-serif;
+}
+
+.grid-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.button {
+  min-height: 37px;
+  padding: 8px 13px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  cursor: pointer;
+  font: 700 12px Arial, sans-serif;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.button-primary:hover {
+  background: #234b40;
+}
+
+.button-quiet {
+  background: transparent;
+  color: var(--accent);
+}
+
+.button:focus-visible,
+.game-toolbar select:focus-visible,
+.cell:focus-visible,
+.clue:focus-visible {
+  outline: 3px solid #b57920;
+  outline-offset: 2px;
+}
+
+.clues {
+  display: grid;
+  gap: 23px;
+}
+
+.clues h2 {
+  margin: 0 0 9px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 20px;
+}
+
+.clue-list {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clue {
+  width: 100%;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  font: 15px/1.4 Georgia, "Times New Roman", serif;
+}
+
+.clue:hover,
+.clue--active {
+  background: #e6e0d2;
+}
+
+.clue--correct::after {
+  content: " ✓";
+  color: var(--accent);
+  font: 700 14px Arial, sans-serif;
+}
+
+.clue-number {
+  display: inline-block;
+  min-width: 25px;
+  font: 700 12px Arial, sans-serif;
+}
+
+.game-message {
+  min-height: 24px;
+  margin: 25px 0 7px;
+  color: var(--accent);
+  text-align: center;
+  font: 700 14px/1.5 Arial, sans-serif;
+}
+
+.how-to-play {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+  font: 12px/1.6 Arial, sans-serif;
+}
+
+footer {
+  padding: 15px 0 23px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  text-align: center;
+  font: italic 13px Georgia, "Times New Roman", serif;
+}
+
+@media (max-width: 650px) {
+  :root {
+    --cell-size: min(19vw, 66px);
+  }
+
+  .page {
+    width: min(100% - 28px, 460px);
+  }
+
+  .game-toolbar {
+    margin-bottom: 20px;
+  }
+
+  .suggestion {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .clues {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .clue {
+    font-size: 14px;
+  }
+}

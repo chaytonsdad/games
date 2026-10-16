@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f0e5">
+    <title>Daily Crossword</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="masthead">
+        <div class="masthead-kicker">THE DAILY EDITION</div>
+        <h1>Crossword</h1>
+        <p id="puzzle-date" class="date-line">Loading today's puzzle…</p>
+      </header>
+
+      <main>
+        <section class="game-toolbar" aria-label="Puzzle settings">
+          <label for="subject">Choose a subject</label>
+          <select id="subject">
+            <option>Animals</option>
+            <option>Food</option>
+            <option>Nature</option>
+            <option>Sports</option>
+          </select>
+          <p id="suggestion" class="suggestion"></p>
+        </section>
+
+        <section class="game-layout" aria-label="Crossword puzzle">
+          <div class="puzzle-column">
+            <div id="crossword-grid" class="crossword-grid" aria-label="Crossword grid"></div>
+            <div class="grid-actions">
+              <button id="check-button" class="button button-primary" type="button">Check puzzle</button>
+              <button id="clear-button" class="button button-quiet" type="button">Clear letters</button>
+            </div>
+          </div>
+
+          <aside class="clues">
+            <section>
+              <h2>Across</h2>
+              <ol id="across-clues" class="clue-list"></ol>
+            </section>
+            <section>
+              <h2>Down</h2>
+              <ol id="down-clues" class="clue-list"></ol>
+            </section>
+          </aside>
+        </section>
+
+        <p id="game-message" class="game-message" role="status" aria-live="polite">
+          Select a square and type. At a crossing, press Enter to switch direction.
+        </p>
+        <p class="how-to-play">
+          Use the arrow keys to move. Click a clue to jump to its answer.
+          Your letters stay in this browser tab while you play.
+        </p>
+      </main>
+
+      <footer> A little daily puzzle, made to be solved one crossing at a time. </footer>
+    </div>
+  </body>
+</html>
